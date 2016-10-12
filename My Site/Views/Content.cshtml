@@ -2,9 +2,16 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
 	Layout = "Master.cshtml";
+	var selection = CurrentPage.AncestorOrSelf(2).Children.Where("Visible");
 }
 @CurrentPage.bodyText
-               <hr>
+	 @foreach (var page in selection)
+					{
+					<li>
+                        <a href="@page.Url">@page.Name</a>
+                    </li>
+					}
+     <hr>
                 <!-- Pager -->
                 			<ul class="pager">
                     			<li class="next">
