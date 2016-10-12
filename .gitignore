@@ -15,7 +15,6 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
-media/
 .vs/
 
 My Site/App_Data/*
