@@ -2,12 +2,6 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
 	Layout = null;
-}
-
-@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Master>
-@using ContentModels = Umbraco.Web.PublishedContentModels;
-@{
-	Layout = null;
 	var selection = CurrentPage.AncestorOrSelf(1).Children.Where("Visible");
 }
 <!DOCTYPE html>
@@ -23,13 +17,12 @@
 
     <title>My blog : @Umbraco.Field("pageName")</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
     <!-- Theme CSS -->
-    <link href="/css/clean-blog.min.css" rel="stylesheet">
-	<link href="/css/site.css" rel="stylesheet">
+    <link href="/css/clean-blog.css" rel="stylesheet">
 	
     <!-- Custom Fonts -->
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -56,12 +49,13 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                <a class="navbar-brand" href="/">Very useful WebSite</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+					<li><a href="/">Home</a></li>
                     @foreach (var page in selection)
 					{
 					<li>
@@ -85,7 +79,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Clean Blog</h1>
+                        <h1>@CurrentPage.heroTitle</h1>
                         <hr class="small">
                         <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
                     </div>
@@ -101,11 +95,17 @@
                 </div>
                 <hr>
                 <!-- Pager -->
+		        <div class="container">
+					<div class="row">
+						<div class="col-lg-12">
                 <ul class="pager">
                     <li class="next">
                         <a href="#">Older Posts &rarr;</a>
                     </li>
                 </ul>
+					</div>
+					</div>
+					</div>
             </div>
         </div>
     </div>
